@@ -13,8 +13,12 @@ export default class NewTaskForm extends Component {
 
   addTask = (event) => {
     event.preventDefault()
-    this.props.addItem(this.state.label)
-    this.setState({label: ''})
+    const {label} = this.state
+
+    if (label.trim() !== '') {
+      this.props.addItem(label)
+      this.setState({label: ''})
+    }
   }
 
   render() {

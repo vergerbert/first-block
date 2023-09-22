@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {formatDistanceToNow} from 'date-fns'
+import classnames from 'classnames'
 import KG from 'date-fns/locale/en-AU'
 import PropTypes from 'prop-types'
 import './task.css'
@@ -32,6 +33,11 @@ export default class Task extends Component {
     const {editing, value, date} = this.state
     const timeElapsed = formatDistanceToNow(date, {includeSeconds: true, locale: KG, addSuffix: true})
 
+    const taskClasses = classnames({
+      completed: completed,
+      editing: editing
+    })
+
     if (editing) {
       return (
       <input className='edit' 
@@ -43,7 +49,8 @@ export default class Task extends Component {
     }
 
     return (
-      <li className={completed ? 'completed' : editing ? 'editing' : null}>
+      
+      <li className={taskClasses}>
         <div className='view'>
           <input className='toggle'
           type='checkbox'

@@ -1,18 +1,13 @@
 import React, {Component} from 'react'
+import {taskStatuses} from '../../constants'
 import PropTypes from 'prop-types'
 import './tasks-filter.css'
 
 export default class TasksFilter extends Component {
-  buttons = [
-    {label: 'All'},
-    {label: 'Active'},
-    {label: 'Completed'}
-  ]
-
   render() {
     const {filter, filterChange} = this.props
 
-    const buttons = this.buttons.map(({label}) => (
+    const buttons = Object.values(taskStatuses).map((status) => (
       <button className={filter === label ? 'selected' : null}
       onClick={() => filterChange(label)}
       key={label}
