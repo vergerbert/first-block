@@ -8,10 +8,10 @@ export default class TasksFilter extends Component {
     const {filter, filterChange} = this.props
 
     const buttons = Object.values(taskStatuses).map((status) => (
-      <button className={filter === label ? 'selected' : null}
-      onClick={() => filterChange(label)}
-      key={label}
-      type='button'>{label}</button>
+      <button className={filter === status ? 'selected' : null}
+      onClick={() => filterChange(status)}
+      key={status}
+      type='button'>{status}</button>
     ))
 
     return <ul className='filters'><li>{buttons}</li></ul>
